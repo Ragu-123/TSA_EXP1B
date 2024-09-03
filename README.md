@@ -11,6 +11,7 @@ To perform regular differncing,seasonal adjustment and log transformatio on elec
 3. Apply regular differncing,seasonal adjustment,log transformation.
 4. Plot the data according to need, before and after regular differncing,seasonal adjustment,log transformation.
 5. Display the overall results.
+
 ### PROGRAM:
 ```
 import pandas as pd
@@ -48,12 +49,14 @@ def adf_test(timeseries):
 
 # Perform the ADF test on the 'Daily minimum temperatures' data
 adf_test(train['Daily minimum temperatures'])
+
 ```
 
 ### Regular Differencing:
 ```
 train['Temp_diff'] = train['Daily minimum temperatures'] - train['Daily minimum temperatures'].shift(1)
 train['Temp_diff'].dropna().plot(title='Differenced Daily Minimum Temperatures')
+
 ```
 
 ### Seasonal adjustment:
@@ -61,29 +64,35 @@ train['Temp_diff'].dropna().plot(title='Differenced Daily Minimum Temperatures')
 n = 7 
 train['Temp_seasonal_diff'] = train['Daily minimum temperatures'] - train['Daily minimum temperatures'].shift(n)
 train['Temp_seasonal_diff'].dropna().plot(title='Seasonally Differenced Daily Minimum Temperatures')
+
 ```
 ### Log transformation
 ```
 train['Temp_log'] = np.log(train['Daily minimum temperatures'])
 train['Temp_log_diff'] = train['Temp_log'] - train['Temp_log'].shift(1)
 train['Temp_log_diff'].dropna().plot(title='Log Differenced Daily Minimum Temperatures')
+
 ```
 
 
 ### OUTPUT:
+
 ![image](https://github.com/user-attachments/assets/dea717cd-5479-4ceb-96e6-bf550c1bc9fc)
 
 
 REGULAR DIFFERENCING:
+
 ![image](https://github.com/user-attachments/assets/4e5d376d-3249-4844-b02a-3ee45c21e0f0)
 
 
 
 SEASONAL ADJUSTMENT:
+
 ![image](https://github.com/user-attachments/assets/8e76aaac-1b82-45e3-ab77-23dc262b31e0)
 
 
 LOG TRANSFORMATION:
+
 ![image](https://github.com/user-attachments/assets/ce0de3b9-43a4-4491-ba35-04f0b76f5b31)
 
 
